@@ -15,8 +15,8 @@ class NewsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF32A2EA),
-        title: Text('News'),
+        backgroundColor: const Color(0xFF32A2EA),
+        title: const Text('News'),
       ),
       body: FutureBuilder(
         future: fetchNews(), // Fetch carousel images from main_menu.dart

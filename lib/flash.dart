@@ -1,17 +1,20 @@
 import 'dart:async';
 import 'package:chedapplication/main_screen.dart';
 import 'package:flutter/material.dart';
-import 'main_menu.dart';
 
 class LogoDisplay extends StatefulWidget {
+  const LogoDisplay({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _LogoDisplayState createState() => _LogoDisplayState();
 }
 
 class _LogoDisplayState extends State<LogoDisplay> {
+  @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 5), () {
       goToLandingPage();
     });
   }
@@ -26,7 +29,7 @@ class _LogoDisplayState extends State<LogoDisplay> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF252872),
+      backgroundColor: const Color(0xFF252872),
       body: Center(
         child: Image.asset(
           'images/logo.png',

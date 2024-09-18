@@ -1,19 +1,14 @@
-import 'dart:math';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:chedapplication/article.dart';
 import 'package:chedapplication/pocketbase.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:chedapplication/map.dart';
 import 'package:pocketbase/pocketbase.dart';
-import 'package:chedapplication/article.dart';
-import 'package:chedapplication/socials.dart';
 import 'package:chedapplication/faq.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
 class LatestFAQItem extends StatefulWidget {
-  const LatestFAQItem();
+  const LatestFAQItem({super.key});
 
   @override
   State<LatestFAQItem> createState() => _LatestFAQItemState();
@@ -49,7 +44,7 @@ class _LatestFAQItemState extends State<LatestFAQItem> {
                 color: Colors.black.withOpacity(0.3),
                 spreadRadius: 3,
                 blurRadius: 7,
-                offset: Offset(0, 3),
+                offset: const Offset(0, 3),
               ),
             ],
             borderRadius: BorderRadius.circular(10),
@@ -76,7 +71,7 @@ class _LatestFAQItemState extends State<LatestFAQItem> {
                   color: Color(0xFF252872),
                 ),
               ),
-              SizedBox(height: 1),
+              const SizedBox(height: 1),
               TextButton(
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -195,6 +190,8 @@ class PrimaryMenuItem extends StatelessWidget {
 
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -203,19 +200,19 @@ class _HomeScreenState extends State<HomeScreen> {
   bool isLoading = false;
 
   final List<CarouselItem> carouselItems = [
-    CarouselItem(
+    const CarouselItem(
       title: 'Vision',
       body:
           'National: Philippine higher education system that is equitable and producing locally responsive, innovative, and globally competitive graduates and lifelong learners. \n\n'
           'Regional Office XI: A Regional Office that leads with innovative solutions toward the welfare of the stakeholders and the operational sustainability, resiliency and competitiveness of higher education institutions.',
     ),
-    CarouselItem(
+    const CarouselItem(
       title: 'Mission',
       body:
           'National: To promote equitable access and ensure quality and relevance of higher education institutions and their programs. \n\n'
           'Regional Office XI: As an innovative solution-driven Regional Office, commits to: foster inclusive innovation; promote local and global excellence and competitiveness; develop and implement accessible, equitable, relevant and responsive programs and services; engage in strategic alliances; and strengthen transparency and good governance.',
     ),
-    CarouselItem(
+    const CarouselItem(
       title: 'Core Values',
       body: 'Competence \n\n'
           'Holistic \n\n'
@@ -226,7 +223,7 @@ class _HomeScreenState extends State<HomeScreen> {
           'eXcellence \n\n'
           'Integrity',
     ),
-    CarouselItem(
+    const CarouselItem(
       title: 'Mandate',
       body:
           'Given the national government’s commitment to transformational leadership that puts education as the central strategy for investing in the Filipino people, reducing poverty, and building national competitiveness and pursuant to Republic Act 7722, CHED shall: \n\n'
@@ -339,7 +336,7 @@ void _showPrimaryMenuItemDetails(String title, String description) {
           children: [
             CustomPaint(
               size: Size(MediaQuery.of(context).size.width, 100),
-              painter: BgPainter(color: Color(0xFF32A2EA)),
+              painter: const BgPainter(color: Color(0xFF32A2EA)),
             ),
             SingleChildScrollView(
               child: Column(
@@ -350,18 +347,18 @@ void _showPrimaryMenuItemDetails(String title, String description) {
                       return Container(
                         height: 50,
                         width: 600,
-                        margin: EdgeInsets.all(10.0),
+                        margin: const EdgeInsets.all(10.0),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10.0),
                           border:
-                              Border.all(color: Color(0xFF32A2EA), width: 1.0),
+                              Border.all(color: const Color(0xFF32A2EA), width: 1.0),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withOpacity(0.3),
                               spreadRadius: 3,
                               blurRadius: 7,
-                              offset: Offset(0, 3),
+                              offset: const Offset(0, 3),
                             ),
                           ],
                         ),
@@ -374,13 +371,13 @@ void _showPrimaryMenuItemDetails(String title, String description) {
                             children: [
                               Text(
                                 item.title,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xFF252872),
                                 ),
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               // Text(
                               //   item.body.substring(0, min(50, item.body.length)) + (item.body.length > 50 ? '... See more' : ''),
                               //   style: TextStyle(
@@ -400,11 +397,11 @@ void _showPrimaryMenuItemDetails(String title, String description) {
                       aspectRatio: 16 / 9,
                       autoPlayCurve: Curves.fastOutSlowIn,
                       enableInfiniteScroll: true,
-                      autoPlayAnimationDuration: Duration(milliseconds: 800),
+                      autoPlayAnimationDuration: const Duration(milliseconds: 800),
                       viewportFraction: 0.8,
                     ),
                   ),
-                  Text(
+                  const Text(
                     'Featured',
                     style: TextStyle(
                       fontSize: 20,
@@ -421,7 +418,7 @@ void _showPrimaryMenuItemDetails(String title, String description) {
                       mainAxisSpacing: 20, // spacing between rows
                       shrinkWrap: true, // Shrink to fit the content
                       physics:
-                          NeverScrollableScrollPhysics(), // Disable scrolling if inside a ScrollView
+                          const NeverScrollableScrollPhysics(), // Disable scrolling if inside a ScrollView
                       children: [
                         // Map item
                         PrimaryMenuItem(
@@ -432,7 +429,7 @@ void _showPrimaryMenuItemDetails(String title, String description) {
                           onTap: () {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
-                              return MapScreen();
+                              return const MapScreen();
                             }));
                           },
                           onLongPress: () {
@@ -443,8 +440,8 @@ void _showPrimaryMenuItemDetails(String title, String description) {
                         PrimaryMenuItem(
                           title: 'HEI Portal',
                           subtitle: 'View HEI Portal',
-                          color: Color.fromARGB(255, 240, 40, 66),
-                          textColor: Color.fromARGB(255, 255, 255, 255),
+                          color: const Color.fromARGB(255, 240, 40, 66),
+                          textColor: const Color.fromARGB(255, 255, 255, 255),
                           child:
                               Image.asset('images/hei_portal.jpg', fit: BoxFit.fill),
                           onTap: () async {
@@ -457,7 +454,7 @@ void _showPrimaryMenuItemDetails(String title, String description) {
                       ],
                     ),
                   ),                    
-                        Text(
+                        const Text(
                     '\nOnline Services, Scholarships, and Grants\n',
                     style: TextStyle(
                       fontSize: 20,
@@ -475,14 +472,14 @@ void _showPrimaryMenuItemDetails(String title, String description) {
                       mainAxisSpacing: 20, // spacing between rows
                       shrinkWrap: true, // Shrink to fit the content
                       physics:
-                          NeverScrollableScrollPhysics(), // Disable scrolling if inside a ScrollView
+                          const NeverScrollableScrollPhysics(), // Disable scrolling if inside a ScrollView
                       children: [
                         // Special Orders Application item
                         PrimaryMenuItem(
                           title: 'SO Application',
                           subtitle:
                               'View SO Applcation',
-                          color: Color.fromARGB(255, 235, 205, 99),
+                          color: const Color.fromARGB(255, 235, 205, 99),
                           textColor: Colors.black,
                           child:
                               Image.asset('images/so3.png', fit: BoxFit.fill),
@@ -498,7 +495,7 @@ void _showPrimaryMenuItemDetails(String title, String description) {
                           title: 'StuFAPs',
                           subtitle:
                               'View StuFAPs',
-                          color: Color.fromARGB(255, 235, 205, 99),
+                          color: const Color.fromARGB(255, 235, 205, 99),
                           textColor: Colors.black,
                           child:
                               Image.asset('images/stufaps.jpg', fit: BoxFit.fill),
@@ -514,8 +511,8 @@ void _showPrimaryMenuItemDetails(String title, String description) {
                           title: 'UniFAST',
                           subtitle:
                               'View UniFAST',
-                          color: Color.fromARGB(255, 130, 174, 240),
-                          textColor: Color.fromARGB(255, 255, 255, 255),
+                          color: const Color.fromARGB(255, 130, 174, 240),
+                          textColor: const Color.fromARGB(255, 255, 255, 255),
                           child:
                               Image.asset('images/unifast.png', fit: BoxFit.fill),
                           onTap: () async {
@@ -531,7 +528,7 @@ void _showPrimaryMenuItemDetails(String title, String description) {
                           title: 'SIKAP',
                           subtitle:
                               'View SIKAP',
-                          color: Color.fromARGB(255, 143, 197, 180),
+                          color: const Color.fromARGB(255, 143, 197, 180),
                           textColor: Colors.black,
                           child:
                               Image.asset('images/sikap.jpg', fit: BoxFit.fill),
@@ -548,8 +545,8 @@ void _showPrimaryMenuItemDetails(String title, String description) {
                           title: 'CAV Application',
                           subtitle:
                               'View CAV Application',
-                          color: Color.fromARGB(255, 203, 152, 199),
-                          textColor: Color.fromARGB(255, 255, 255, 255),
+                          color: const Color.fromARGB(255, 203, 152, 199),
+                          textColor: const Color.fromARGB(255, 255, 255, 255),
                           child:
                               Image.asset('images/cav.jpg', fit: BoxFit.fill),
                           onTap: () async {
@@ -563,8 +560,8 @@ void _showPrimaryMenuItemDetails(String title, String description) {
                         PrimaryMenuItem(
                           title: 'CSM Application',
                           subtitle: 'Client Satisfaction \n    Measurement',
-                          color: Color.fromARGB(255, 66, 83, 178),
-                          textColor: Color.fromARGB(255, 255, 255, 255),
+                          color: const Color.fromARGB(255, 66, 83, 178),
+                          textColor: const Color.fromARGB(255, 255, 255, 255),
                           child:
                               Image.asset('images/csm.jpg', fit: BoxFit.fill),
                           onTap: () async {
@@ -578,8 +575,8 @@ void _showPrimaryMenuItemDetails(String title, String description) {
                         PrimaryMenuItem(
                           title: 'Queueing \nApplication',
                           subtitle: 'Clientele Queueing',
-                          color: Color.fromARGB(255, 241, 150, 107),
-                          textColor: Color.fromARGB(255, 255, 255, 255),
+                          color: const Color.fromARGB(255, 241, 150, 107),
+                          textColor: const Color.fromARGB(255, 255, 255, 255),
                           child:
                               Image.asset('images/queueing.jpg', fit: BoxFit.fill),
                           onTap: () async {
@@ -592,8 +589,8 @@ void _showPrimaryMenuItemDetails(String title, String description) {
                         PrimaryMenuItem(
                           title: 'Citizens Charter',
                           subtitle: 'View Citizens Charter',
-                          color: Color.fromARGB(255, 33, 167, 60),
-                          textColor: Color.fromARGB(255, 255, 255, 255),
+                          color: const Color.fromARGB(255, 33, 167, 60),
+                          textColor: const Color.fromARGB(255, 255, 255, 255),
                           child:
                               Image.asset('images/czc.png', fit: BoxFit.fill),
                           onTap: () async {
@@ -663,7 +660,7 @@ void _showPrimaryMenuItemDetails(String title, String description) {
                 ],
               ),
             ),
-            LatestFAQItem(),
+            const LatestFAQItem(),
           ],
         ),
       ),
@@ -677,7 +674,7 @@ void _showPrimaryMenuItemDetails(String title, String description) {
         return Dialog(
           backgroundColor: Colors.transparent,
           child: Container(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
@@ -685,28 +682,28 @@ void _showPrimaryMenuItemDetails(String title, String description) {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(menuItem.icon, size: 50, color: Color(0xFF32A2EA)),
-                SizedBox(height: 10),
+                Icon(menuItem.icon, size: 50, color: const Color(0xFF32A2EA)),
+                const SizedBox(height: 10),
                 Text(
                   menuItem.title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Color(0xFF32A2EA),
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   menuItem.description,
-                  style: TextStyle(fontSize: 16, color: Color(0xFF32A2EA)),
+                  style: const TextStyle(fontSize: 16, color: Color(0xFF32A2EA)),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text('Close', style: TextStyle(color: Colors.blue)),
+                  child: const Text('Close', style: TextStyle(color: Colors.blue)),
                 ),
               ],
             ),

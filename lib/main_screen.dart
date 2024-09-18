@@ -4,7 +4,6 @@ import 'package:chedapplication/map.dart';
 import 'package:chedapplication/news.dart';
 import 'package:chedapplication/socials.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MainScreenItem {
   final String title;
@@ -19,6 +18,8 @@ class MainScreenItem {
 }
 
 class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
+
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
@@ -75,7 +76,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Color(0xFF32A2EA),
+        backgroundColor: const Color(0xFF32A2EA),
         items: menuItems.map((e) {
           return BottomNavigationBarItem(
             icon: Icon(e.icon),

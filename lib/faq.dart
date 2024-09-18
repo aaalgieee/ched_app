@@ -4,6 +4,8 @@ import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:pocketbase/pocketbase.dart';
 
 class FaqScreen extends StatefulWidget {
+  const FaqScreen({super.key});
+
   @override
   State<FaqScreen> createState() => _FaqScreenState();
 }
@@ -20,8 +22,8 @@ class _FaqScreenState extends State<FaqScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('FAQs'),
-        backgroundColor: Color(0xFF32A2EA), // Set the appBar color here
+        title: const Text('FAQs'),
+        backgroundColor: const Color(0xFF32A2EA), // Set the appBar color here
       ),
       body: FutureBuilder(
         future: _loadFaqs(),

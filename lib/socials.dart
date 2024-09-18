@@ -11,7 +11,7 @@ class Social {
 }
 
 class SocialsPage extends StatefulWidget {
-  SocialsPage({Key? key}) : super(key: key);
+  const SocialsPage({super.key});
 
   @override
   SocialsPageState createState() => SocialsPageState();
@@ -76,7 +76,7 @@ class SocialsPageState extends State<SocialsPage> {
           return ListTile(
             leading: Icon(
               socials[index].icon,
-              color: Color(0xFF32A2EA), // Set the icon color to blue
+              color: const Color(0xFF32A2EA), // Set the icon color to blue
             ),
             title: Text(socials[index].name),
             onTap: () {

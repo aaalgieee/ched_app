@@ -20,7 +20,7 @@ class ArticleScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Article'),
+        title: const Text('Article'),
         backgroundColor: Colors.blue,
       ),
       body: FutureBuilder(
@@ -39,7 +39,7 @@ class ArticleScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     article.data['title'],
-                    style: Theme.of(context).textTheme.headline5,
+                    style: Theme.of(context).textTheme.headlineSmall,
                   ),
                 ),
                 Padding(

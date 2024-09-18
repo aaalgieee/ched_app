@@ -6,30 +6,32 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'CHED RO XI',
       theme: ThemeData(
         // Color(0xFF252872)
-        primarySwatch: MaterialColor(
+        primarySwatch: const MaterialColor(
           0xFF252872,
           {
-            50: Color(0xFF252872),
-            100: Color(0xFF252872),
-            200: Color(0xFF252872),
-            300: Color(0xFF252872),
-            400: Color(0xFF252872),
-            500: Color(0xFF252872),
-            600: Color(0xFF252872),
-            700: Color(0xFF252872),
-            800: Color(0xFF252872),
-            900: Color(0xFF252872),
+            50: const Color(0xFF252872),
+            100: const Color(0xFF252872),
+            200: const Color(0xFF252872),
+            300: const Color(0xFF252872),
+            400: const Color(0xFF252872),
+            500: const Color(0xFF252872),
+            600: const Color(0xFF252872),
+            700: const Color(0xFF252872),
+            800: const Color(0xFF252872),
+            900: const Color(0xFF252872),
           }
         ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LogoDisplay(),
+      home: const LogoDisplay(),
     );
   }
 }

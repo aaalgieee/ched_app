@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 import 'package:chedapplication/pocketbase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -86,7 +88,7 @@ class _SchoolInformationSheetState extends State<SchoolInformationSheet> {
         maxChildSize: 1,
         expand: true,
         snap: true,
-        snapSizes: [
+        snapSizes: const [
           0.04,
           0.5,
         ],
@@ -109,10 +111,10 @@ class _SchoolInformationSheetState extends State<SchoolInformationSheet> {
             child: CustomScrollView(
               controller: scrollController,
               slivers: [
-                SliverToBoxAdapter(
+                const SliverToBoxAdapter(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Icon(Icons.drag_handle),
                     ],
                   ),
@@ -181,17 +183,12 @@ class _MapScreenState extends State<MapScreen> with TickerProviderStateMixin {
 
   SchoolLocation? selectedSchool;
 
-  void _animatedMapMove(LatLng destLocation, double destZoom,
-      {double? rotation}) {
-    rotation ??= mapController.rotation;
-
+  void _animatedMapMove(LatLng destLocation, double destZoom) {
     final latTween = Tween<double>(
-        begin: mapController.center.latitude, end: destLocation.latitude);
+        begin: mapController.camera.center.latitude, end: destLocation.latitude);
     final lngTween = Tween<double>(
-        begin: mapController.center.longitude, end: destLocation.longitude);
-    final zoomTween = Tween<double>(begin: mapController.zoom, end: destZoom);
-    final rotationTween =
-        Tween<double>(begin: mapController.rotation, end: rotation);
+        begin: mapController.camera.center.longitude, end: destLocation.longitude);
+    final zoomTween = Tween<double>(begin: mapController.camera.zoom, end: destZoom);
 
     final controller = AnimationController(
         duration: const Duration(milliseconds: 500), vsync: this);
@@ -199,10 +196,9 @@ class _MapScreenState extends State<MapScreen> with TickerProviderStateMixin {
         CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn);
 
     controller.addListener(() {
-      mapController.moveAndRotate(
+      mapController.move(
         LatLng(latTween.evaluate(animation), lngTween.evaluate(animation)),
         zoomTween.evaluate(animation),
-        rotationTween.evaluate(animation),
       );
     });
 
@@ -261,10 +257,10 @@ class _MapScreenState extends State<MapScreen> with TickerProviderStateMixin {
           FlutterMap(
             mapController: mapController,
             options: MapOptions(
-                center: LatLng(7.0699375, 125.59998569691578),
-                zoom: 14,
+                initialCenter: const LatLng(7.0699375, 125.59998569691578),
+                initialZoom: 14,
                 onTap: (tapPosition, point) {
-                  _animatedMapMove(mapController.center, 14);
+                  _animatedMapMove(mapController.camera.center, 14);
                   setState(() {
                     selectedSchool = null;
                   });
@@ -282,23 +278,21 @@ class _MapScreenState extends State<MapScreen> with TickerProviderStateMixin {
                       point: school.location,
                       width: 40,
                       height: 40,
-                      builder: (context) {
-                        return GestureDetector(
-                          child: Image.asset('images/school_pin.png'),
-                          onTap: () async {
-                            final loc = school.location;
-                            final center =
-                                LatLng(loc.latitude - 0.001, loc.longitude);
-                            _animatedMapMove(center, 18.0, rotation: 0.0);
+                      child: GestureDetector(
+                        child: Image.asset('images/school_pin.png'),
+                        onTap: () async {
+                          final loc = school.location;
+                          final center =
+                              LatLng(loc.latitude - 0.001, loc.longitude);
+                          _animatedMapMove(center, 18.0);
 
-                            setState(() {
-                              selectedSchool = school;
-                            });
+                          setState(() {
+                            selectedSchool = school;
+                          });
 
-                            sheet.currentState?._expand();
-                          },
-                        );
-                      },
+                          sheet.currentState?._expand();
+                        },
+                      ),
                     ),
                   ],
                 ),
@@ -318,7 +312,7 @@ class _MapScreenState extends State<MapScreen> with TickerProviderStateMixin {
                       borderRadius: BorderRadius.circular(8.0),
                       borderSide: BorderSide.none,
                     ),
-                    prefixIcon: Icon(Icons.search),
+                    prefixIcon: const Icon(Icons.search),
                   ),
                 ),
                 if (filteredSchools.isNotEmpty)
@@ -327,7 +321,7 @@ class _MapScreenState extends State<MapScreen> with TickerProviderStateMixin {
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(8.0),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           color: Colors.black26,
                           blurRadius: 10,
@@ -347,7 +341,7 @@ class _MapScreenState extends State<MapScreen> with TickerProviderStateMixin {
                             final loc = school.location;
                             final center =
                                 LatLng(loc.latitude - 0.001, loc.longitude);
-                            _animatedMapMove(center, 18.0, rotation: 0.0);
+                            _animatedMapMove(center, 18.0);
 
                             setState(() {
                               selectedSchool = school;
